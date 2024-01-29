@@ -18,6 +18,14 @@ fs.writeFile(
       (err) => {
         if (err) throw err;
         console.log("Append Complete!");
+        fs.rename(
+          path.join(__dirname, "Files", "new.txt"),
+          path.join(__dirname, "Files", "newRenamed.txt"),
+          (err) => {
+            if (err) throw err;
+            console.log("Rename Complete!");
+          }
+        );
       }
     );
   }
