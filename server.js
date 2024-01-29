@@ -1,12 +1,12 @@
+const fs = require("fs");
 const path = require("path");
-const { add, sub, mul, div, mod } = require("./math");
 
-console.log(__dirname);
-console.log(__filename);
-console.log(path.parse(__filename));
-console.log("---------------------------");
-console.log(add(3, 3));
-console.log(sub(4, 3));
-console.log(mul(3, 3));
-console.log(div(3, 3));
-console.log(mod(3, 3));
+fs.readFile(path.join(__dirname, "Files", "msg.txt"), "utf8", (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+
+process.on("uncaughtException", (err) => {
+  console.error("There is an uncaught error : ", err);
+  process.exit(1);
+});
