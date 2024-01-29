@@ -1,0 +1,27 @@
+{
+  "name": "nodejs_tutor",
+  "version": "1.0.0",
+  "description": "nodejs learnings",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "NodeJs_tutor"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Paulson Robert",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "dependencies": {
+    "date-fns": "^3.3.1",
+    "uuid": "^9.0.1"
+  }
+}
