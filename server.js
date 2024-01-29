@@ -1,35 +1,34 @@
-const fs = require("fs");
+const fsPromises = require("fs").promises;
 const path = require("path");
 
-fs.readFile(path.join(__dirname, "Files", "msg.txt"), "utf8", (err, data) => {
-  if (err) throw err;
-  console.log("Read Complete!");
-});
-
-fs.writeFile(
-  path.join(__dirname, "Files", "new.txt"),
-  "This is a newly created file.",
-  (err) => {
-    if (err) throw err;
-    console.log("Write Complete!");
-    fs.appendFile(
-      path.join(__dirname, "Files", "new.txt"),
-      "\n\n This is appended text!!",
-      (err) => {
-        if (err) throw err;
-        console.log("Append Complete!");
-        fs.rename(
-          path.join(__dirname, "Files", "new.txt"),
-          path.join(__dirname, "Files", "newRenamed.txt"),
-          (err) => {
-            if (err) throw err;
-            console.log("Rename Complete!");
-          }
-        );
-      }
+const fileOps = async () => {
+  try {
+    const fileData = await fsPromises.readFile(
+      path.join(__dirname, "Files", "msg.txt"),
+      "utf8"
     );
+    console.log(fileData);
+    console.log("Read Complete!");
+    await fsPromises.writeFile(
+      path.join(__dirname, "Files", "new.txt"),
+      "This is a newly created file."
+    );
+    console.log("Write Complete!");
+    await fsPromises.appendFile(
+      path.join(__dirname, "Files", "new.txt"),
+      "\n\n This is appended text!!"
+    );
+    console.log("Append Complete!");
+    await fsPromises.rename(
+      path.join(__dirname, "Files", "new.txt"),
+      path.join(__dirname, "Files", "newRenamed.txt")
+    );
+    console.log("Rename Complete!");
+  } catch (err) {
+    console.error(err);
   }
-);
+};
+fileOps();
 
 process.on("uncaughtException", (err) => {
   console.error("There is an uncaught error : ", err);
