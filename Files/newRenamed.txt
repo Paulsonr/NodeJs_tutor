@@ -1,3 +1,0 @@
-This is a newly created file.
-
- This is appended text!!

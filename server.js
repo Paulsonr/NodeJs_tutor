@@ -24,6 +24,8 @@ const fileOps = async () => {
       path.join(__dirname, "Files", "newRenamed.txt")
     );
     console.log("Rename Complete!");
+    await fsPromises.unlink(path.join(__dirname, "Files", "newRenamed.txt"));
+    console.log("Delete Complete!");
   } catch (err) {
     console.error(err);
   }
